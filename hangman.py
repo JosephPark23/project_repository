@@ -47,23 +47,23 @@ class Hangman:
 
     # play function
         def play_hangman(self):
-        while self.wrong_guesses < 7:
-            time.sleep(3)
-            clear()
-            print(' '.join(self.guessed_so_far))
-            print(f"\nNumber of wrong guesses left: {7-self.wrong_guesses}\n")
-            self.end_game(self.guessed_so_far, self.wrong_guesses)
-            user_guess = input('Enter your guess: ')
-            if not self.validate(user_guess):
-                continue
-            if not self.check(user_guess):
-                print('The letter that you entered is not in the word.')
-                self.wrong_guesses += 1
-                continue
-            print("The letter is in the word!")
-            for pos in self.positions:
-                self.guessed_so_far[pos] = user_guess
-        print("You lost, the man was hanged :(")
+            while self.wrong_guesses < 7:
+                time.sleep(3)
+                clear()
+                print(' '.join(self.guessed_so_far))
+                print(f"\nNumber of wrong guesses left: {7-self.wrong_guesses}\n")
+                self.end_game(self.guessed_so_far, self.wrong_guesses)
+                user_guess = input('Enter your guess: ')
+                if not self.validate(user_guess):
+                    continue
+                if not self.check(user_guess):
+                    print('The letter that you entered is not in the word.')
+                    self.wrong_guesses += 1
+                    continue
+                print("The letter is in the word!")
+                for pos in self.positions:
+                    self.guessed_so_far[pos] = user_guess
+            print("You lost, the man was hanged :(")
 
 
 print("Welcome to Hangman! For instructions, go to www.wikihow.com/Play-Hangman.")
