@@ -25,10 +25,10 @@ class Hangman:
         if user_guess.isalpha() and len(user_guess) == 1:
             return True
         else:
-            print("u did not enter a letter")
+            print("You did not enter a letter.")
             return False
 
-    # checks if the letter user guessed is in the word
+    # checks if the letter user guessed is in the word and records position and state
     def check(self, user_guess):
         self.positions = []
         for i, char in enumerate(self.word):
@@ -38,32 +38,32 @@ class Hangman:
 
     # ends the game to see if person won
     def end_game(self, guessed_so_far, wrong_guesses):
-        # there's probably a more efficient way to do this, but I'm not that good
         if "_" not in guessed_so_far:
-            print(f"yay u won the word was {self.word}")
+            print(f"Congratulations! You won! The word was {self.word}")
             quit()
         elif wrong_guesses == 8:
-            print('hangman ded')
+            print('You lost, the man was hanged :(')
             quit()
 
-    # play part
-    def play_hangman(self):
+    # play function
+        def play_hangman(self):
         while self.wrong_guesses < 7:
             time.sleep(3)
             clear()
-            print(self.guessed_so_far, f"\nnumber of wrong guesses left: {7-self.wrong_guesses}\n")
+            print(' '.join(self.guessed_so_far))
+            print(f"\nNumber of wrong guesses left: {7-self.wrong_guesses}\n")
             self.end_game(self.guessed_so_far, self.wrong_guesses)
-            user_guess = input('Enter your guess!: ')
+            user_guess = input('Enter your guess: ')
             if not self.validate(user_guess):
                 continue
             if not self.check(user_guess):
-                print('The letter that you entered is not in the word')
+                print('The letter that you entered is not in the word.')
                 self.wrong_guesses += 1
                 continue
-            print('check works', self.check(user_guess))
+            print("The letter is in the word!")
             for pos in self.positions:
                 self.guessed_so_far[pos] = user_guess
-        print("hangman dead")
+        print("You lost, the man was hanged :(")
 
 
 print("Welcome to Hangman! For instructions, go to www.wikihow.com/Play-Hangman.")
@@ -74,6 +74,6 @@ while True:
     if word.isalpha():
         break
     else:
-        print('u did not enter a word, try again')
+        print('You entered something other than a word. Try again.')
 h = Hangman()
 h.play_hangman()
