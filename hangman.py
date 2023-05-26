@@ -42,7 +42,7 @@ class Hangman:
             print(f"Congratulations! You won! The word was {self.word}")
             quit()
         elif wrong_guesses == 8:
-            print('You lost, the man was hanged :(')
+        print(f"You lost, the man was hanged :(. The word was {self.word}.")
             quit()
 
     # play function
@@ -63,7 +63,8 @@ class Hangman:
                 print("The letter is in the word!")
                 for pos in self.positions:
                     self.guessed_so_far[pos] = user_guess
-            print("You lost, the man was hanged :(")
+        print(f"You lost, the man was hanged :(. The word was {self.word}.")
+
 
 
 print("Welcome to Hangman! For instructions, go to www.wikihow.com/Play-Hangman.")
