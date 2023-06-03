@@ -1,3 +1,4 @@
+# if running this in an IDE, please turn terminal emulation on for this to work
 from os import system, name
 import time
 import random
