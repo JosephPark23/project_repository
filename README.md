@@ -1,2 +1,1 @@
-# first_repo
-# hangman code
+a repositiory for some projects for me to get better insight into OOP development
