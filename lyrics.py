@@ -59,9 +59,11 @@ def open_page():
             a = str(x.get_text())
             pos_one = a.find("Lyrics")
             pos_two = a.find("Submit Corrections")  # print lyrics only
-            print("\n\n\nhey, it's your lyrics!:\n\n\n", a[pos_one + 11:pos_two])
-            q = input("\n\n\n\n\nif u wanna find another song, just hit that enter key!\nIf you don't, "
-                      "that's okay! press 'q', then enter!\n")
+            print("\n======================\nhey, it's your lyrics!\n======================\n\n")
+            print(a[pos_one + 11:pos_two - 18])
+            q = input("\n======================================================\nif u wanna find another song, "
+                      "just hit that enter key!\nif u don't, that's okay! press 'q', "
+                      "then enter!\n======================================================\n")
             if q == 'q':
                 clear()
                 print("hey hey hey goodbye~")
@@ -73,7 +75,8 @@ def open_page():
         # exception handling for typos and other spelling mistakes
         except urllib.request.HTTPError:
             print("\n\ncan't find what u want, maybe cuz:\n1. ur spelling sucks\n2. sometimes the artist of the song "
-                  "is not who u\nthink it is, or the song name is wrong\n3. this program isn't all-encompassing")
+                  "is not who u\n"
+                  "think it is, or the song name is wrong\n3. this program isn't all-encompassing")
             time.sleep(8)
             clear()
             open_page()
