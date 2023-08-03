@@ -1,11 +1,15 @@
 # Note: Do not use this program for commercial use. Personal use only.
-# Imports necessary modules: bs4 and urllib for webscraping, os and time for cleaning up interface
+# Imports necessary modules: bs4 and urllib for webscraping, os and time for cleaning up interface, and colorama/utilities for aesthetics
 from bs4 import BeautifulSoup
 import urllib
 from urllib.request import urlopen
 from os import name, system
 import time
 import string
+import colorama as cr
+from utilities import Util as util
+
+cr.init(autoreset=True)
 
 
 # clears screen
@@ -43,10 +47,10 @@ def tokenize(artist, song):
 
 # initialize user input and url
 def open_page():
-    print("welcome to my lyrics finder! look up your lyrics here!")
+    print(util.bold + "welcome to my lyrics finder! look up your lyrics here!\n")
     while True:
         song_name = input("what's the name of the song?: ")
-        artist_name = input("what's the primary artist's name? (if it dosen't work, try excluding the word 'the'): ")
+        artist_name = input("what's the primary artist's name? (if it doesn't work, try excluding the word 'the'): ")
         artist_name, song_name = tokenize(artist_name, song_name)
         url = f"https://www.azlyrics.com/lyrics/{artist_name}/{song_name}.html"
 
@@ -59,14 +63,15 @@ def open_page():
             a = str(x.get_text())
             pos_one = a.find("Lyrics")
             pos_two = a.find("Submit Corrections")  # print lyrics only
-            print("\n=======================\nhey, it's your lyrics!:\n=======================\n\n")
-            print(a[pos_one + 11:pos_two - 18])
-            q = input("\n======================================================\nif u wanna find another song, "
-                      "just hit that enter key!\nif u don't, that's okay! press 'q', "
-                      "then enter!\n======================================================\n")
+            print(util.bold + "\n======================\nhey, it's your lyrics!\n======================\n\n")
+            print(f"{cr.Fore.CYAN}{a[pos_one + 11:pos_two - 18]}")
+            time.sleep(3)
+            q = input(util.bold + "\n======================================================\nif u wanna find another "
+                                  "song, just hit that enter key!\nif u don't, that's okay! press 'q', "
+                                  "then enter!\n======================================================\n")
             if q == 'q':
                 clear()
-                print("hey hey hey goodbye~")
+                print(util.bold + "hey hey hey goodbye~")
                 time.sleep(2)
                 quit()
             else:
