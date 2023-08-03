@@ -44,8 +44,9 @@ def tokenize(artist, song):
 
 # initialize user input and URL
 def open_page():
-    artist_name = input("Enter in the name of the artist: ")
+    print("welcome to my lyrics finder! look up your lyrics here!")
     song_name = input("enter in the name of the song: ")
+    artist_name = input("enter in the name of the artist: ")
     artist_name, song_name = tokenize(artist_name, song_name)
     url = f"https://www.azlyrics.com/lyrics/{artist_name}/{song_name}.html"
 
