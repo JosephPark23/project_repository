@@ -45,28 +45,30 @@ def tokenize(artist, song):
 # initialize user input and URL
 def open_page():
     print("welcome to my lyrics finder! look up your lyrics here!")
-    song_name = input("enter in the name of the song: ")
-    artist_name = input("enter in the name of the artist: ")
-    artist_name, song_name = tokenize(artist_name, song_name)
-    url = f"https://www.azlyrics.com/lyrics/{artist_name}/{song_name}.html"
-
-    try:
-        # opens and reads the lyrics page
-        page = urlopen(url)
-        html = page.read().decode("utf-8")
-        soup = BeautifulSoup(html, "html.parser")
-        x = soup.find(class_="col-xs-12 col-lg-8 text-center")
-        a = str(x.get_text())
-        pos_one = a.find("Lyrics")
-        pos_two = a.find("Submit Corrections")  # print lyrics only
-        print("\nHere you go!:\n", a[pos_one+11:pos_two])
-
-    # exception handling for typos and other spelling mistakes
-    except urllib.request.HTTPError:
-        print("We can't find what you were looking for. Please check for typos and spelling errors. Try again?")
-        time.sleep(3)
-        clear()
-        open_page()
+        while True:
+        song_name = input("what's the name of the song?: ")
+        artist_name = input("what's the artist's name? (try excluding the word 'the'): ")
+        artist_name, song_name = tokenize(artist_name, song_name)
+        url = f"https://www.azlyrics.com/lyrics/{artist_name}/{song_name}.html"
+    
+        try:
+            # opens and reads the lyrics page
+            page = urlopen(url)
+            html = page.read().decode("utf-8")
+            soup = BeautifulSoup(html, "html.parser")
+            x = soup.find(class_="col-xs-12 col-lg-8 text-center")
+            a = str(x.get_text())
+            pos_one = a.find("Lyrics")
+            pos_two = a.find("Submit Corrections")  # print lyrics only
+            print("\n\n\nhey, it's your lyrics!:\n\n\n", a[pos_one+11:pos_two])
+    
+        # exception handling for typos and other spelling mistakes
+        except urllib.request.HTTPError:
+            print("can't find what u want, maybe cuz:\n1. ur spelling sucks\n2. ur song or artist info is just "
+                  "wrong\n3. this program isn't all-encompassing")
+            time.sleep(5)
+            clear()
+            open_page()
 
 
 open_page()
