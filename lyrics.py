@@ -56,8 +56,9 @@ def open_page():
         soup = BeautifulSoup(html, "html.parser")
         x = soup.find(class_="col-xs-12 col-lg-8 text-center")
         a = str(x.get_text())
-        pos = a.find("Submit Corrections")  # print lyrics only
-        print(a[:pos])
+        pos_one = a.find("Lyrics")
+        pos_two = a.find("Submit Corrections")  # print lyrics only
+        print(a[pos_one:pos_two])
 
     # exception handling for typos and other spelling mistakes
     except urllib.request.HTTPError:
