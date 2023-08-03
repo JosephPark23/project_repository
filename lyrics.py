@@ -59,7 +59,7 @@ def open_page():
         a = str(x.get_text())
         pos_one = a.find("Lyrics")
         pos_two = a.find("Submit Corrections")  # print lyrics only
-        print(a[pos_one+11:pos_two])
+        print("\nHere you go!:\n", a[pos_one+11:pos_two])
 
     # exception handling for typos and other spelling mistakes
     except urllib.request.HTTPError:
