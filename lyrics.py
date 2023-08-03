@@ -1,5 +1,5 @@
 # Note: Do not use this program for commercial use. Personal use only.
-# Imports necessary modules: bs4 and urllib for web scraping, os and time for cleaning up interface
+# Imports necessary modules: bs4 and urllib for webscraping, os and time for cleaning up interface
 from bs4 import BeautifulSoup
 import urllib
 from urllib.request import urlopen
@@ -12,7 +12,7 @@ import string
 def clear():
     if name == 'nt':
         _ = system('cls')
-    # for Mac and linux
+    # for mac and linux
     else:
         _ = system('clear')
 
@@ -28,9 +28,8 @@ def remove_punctuation(string_):
     return clean_string
 
 
-# standardizes input for URL
+# standardizes input for url
 def tokenize(artist, song):
-
     # converts all characters to lowercase and strips of whitespace
     artist_name = remove_punctuation(artist)
     artist_name = artist_name.lower().replace(" ", "")
@@ -42,15 +41,15 @@ def tokenize(artist, song):
     return artist_name, song_name
 
 
-# initialize user input and URL
+# initialize user input and url
 def open_page():
     print("welcome to my lyrics finder! look up your lyrics here!")
-        while True:
+    while True:
         song_name = input("what's the name of the song?: ")
         artist_name = input("what's the artist's name? (try excluding the word 'the'): ")
         artist_name, song_name = tokenize(artist_name, song_name)
         url = f"https://www.azlyrics.com/lyrics/{artist_name}/{song_name}.html"
-    
+
         try:
             # opens and reads the lyrics page
             page = urlopen(url)
@@ -60,8 +59,17 @@ def open_page():
             a = str(x.get_text())
             pos_one = a.find("Lyrics")
             pos_two = a.find("Submit Corrections")  # print lyrics only
-            print("\n\n\nhey, it's your lyrics!:\n\n\n", a[pos_one+11:pos_two])
-    
+            print("\n\n\nhey, it's your lyrics!:\n\n\n", a[pos_one + 11:pos_two])
+            q = input("\n\n\n\n\nif u wanna find another song, just hit that enter key!\nIf you don't, "
+                      "that's okay! press 'q', then enter!\n")
+            if q == 'q': 
+                clear()
+                print("hey hey hey goodbye~")
+                time.sleep(2)
+                quit()
+            else:
+                clear()
+
         # exception handling for typos and other spelling mistakes
         except urllib.request.HTTPError:
             print("can't find what u want, maybe cuz:\n1. ur spelling sucks\n2. ur song or artist info is just "
