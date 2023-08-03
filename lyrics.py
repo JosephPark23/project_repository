@@ -46,7 +46,7 @@ def open_page():
     print("welcome to my lyrics finder! look up your lyrics here!")
     while True:
         song_name = input("what's the name of the song?: ")
-        artist_name = input("what's the artist's name? (try excluding the word 'the'): ")
+        artist_name = input("what's the primary artist's name? (if it dosen't work, try excluding the word 'the'): ")
         artist_name, song_name = tokenize(artist_name, song_name)
         url = f"https://www.azlyrics.com/lyrics/{artist_name}/{song_name}.html"
 
@@ -59,7 +59,7 @@ def open_page():
             a = str(x.get_text())
             pos_one = a.find("Lyrics")
             pos_two = a.find("Submit Corrections")  # print lyrics only
-            print("\n======================\nhey, it's your lyrics!\n======================\n\n")
+            print("\n=======================\nhey, it's your lyrics!:\n=======================\n\n")
             print(a[pos_one + 11:pos_two - 18])
             q = input("\n======================================================\nif u wanna find another song, "
                       "just hit that enter key!\nif u don't, that's okay! press 'q', "
