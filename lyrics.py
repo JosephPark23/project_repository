@@ -62,7 +62,7 @@ def open_page():
             print("\n\n\nhey, it's your lyrics!:\n\n\n", a[pos_one + 11:pos_two])
             q = input("\n\n\n\n\nif u wanna find another song, just hit that enter key!\nIf you don't, "
                       "that's okay! press 'q', then enter!\n")
-            if q == 'q': 
+            if q == 'q':
                 clear()
                 print("hey hey hey goodbye~")
                 time.sleep(2)
@@ -72,9 +72,9 @@ def open_page():
 
         # exception handling for typos and other spelling mistakes
         except urllib.request.HTTPError:
-            print("can't find what u want, maybe cuz:\n1. ur spelling sucks\n2. ur song or artist info is just "
+            print("\n\ncan't find what u want, maybe cuz:\n1. ur spelling sucks\n2. ur song or artist info is just "
                   "wrong\n3. this program isn't all-encompassing")
-            time.sleep(5)
+            time.sleep(7)
             clear()
             open_page()
 
