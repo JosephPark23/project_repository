@@ -72,9 +72,9 @@ def open_page():
 
         # exception handling for typos and other spelling mistakes
         except urllib.request.HTTPError:
-            print("\n\ncan't find what u want, maybe cuz:\n1. ur spelling sucks\n2. ur song or artist info is just "
-                  "wrong\n3. this program isn't all-encompassing")
-            time.sleep(7)
+            print("\n\ncan't find what u want, maybe cuz:\n1. ur spelling sucks\n2. sometimes the artist of the song "
+                  "is not who u\nthink it is, or the song name is wrong\n3. this program isn't all-encompassing")
+            time.sleep(8)
             clear()
             open_page()
 
