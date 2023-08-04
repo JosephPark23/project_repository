@@ -1,5 +1,5 @@
 # Note: Do not use this program for commercial use. Personal use only.
-# Imports necessary modules: bs4 and urllib for webscraping, os and time for cleaning up interface, and colorama/utilities for aesthetics
+# Imports necessary modules: bs4 and urllib for webscraping, os and time for cleaning up interface
 from bs4 import BeautifulSoup
 import urllib
 from urllib.request import urlopen
@@ -61,12 +61,21 @@ def open_page():
             soup = BeautifulSoup(html, "html.parser")
             x = soup.find(class_="col-xs-12 col-lg-8 text-center")
             a = str(x.get_text())
+
+            # isolates the lyrics from the rest of the text
             pos_one = a.find("Lyrics")
             pos_two = a.find("Submit Corrections")  # print lyrics only
-            print(util.bold + "\n======================\nhey, it's your lyrics!\n======================\n\n")
-            print(f"{cr.Fore.CYAN}{a[pos_one + 11:pos_two - 18]}")
-            time.sleep(3)
-            q = input(util.bold + "\n======================================================\nif u wanna find another "
+            b = a[pos_one + 11:pos_two - 18]
+            print(util.bold + "\n==========================\n||hey, it's your lyrics!||\n==========================\n\n")
+
+            # prints the lyrics line-by-line
+            lines = b.splitlines()
+            for line in lines:
+                print(f"{cr.Fore.CYAN}{line}")
+                time.sleep(1)
+
+            # checks if user wishes to look up another song
+            q = input(util.bold + "\n=============(scroll up for your lyrics!)=============\nif u wanna find another "
                                   "song, just hit that enter key!\nif u don't, that's okay! press 'q', "
                                   "then enter!\n======================================================\n")
             if q == 'q':
@@ -77,7 +86,7 @@ def open_page():
             else:
                 clear()
 
-        # exception handling for typos and other spelling mistakes
+        # exception handling for typos and other spelling mistakes, and to keep the loop running smoothly
         except urllib.request.HTTPError:
             print("\n\ncan't find what u want, maybe cuz:\n1. ur spelling sucks\n2. sometimes the artist of the song "
                   "is not who u\n"
