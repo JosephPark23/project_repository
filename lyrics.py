@@ -11,6 +11,7 @@ import string
 import colorama as cr
 from utilities import Util as util
 
+
 cr.init(autoreset=True)
 
 
