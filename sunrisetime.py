@@ -11,9 +11,13 @@ it = pyf.util.Iterator(board)
 it.start()
 
 # initialize output
-board.digital[13].mode = pyf.OUTPUT
+motor = 13
+board.digital[motor].mode = pyf.OUTPUT
 
+# creates log
 f = open("arduino_log.txt", "x")
+f.write("ARDUINO LOG: ")
+f.close()
 
 
 # scrape sunrise and sunset times
@@ -47,7 +51,10 @@ while True:
     print(sunset_time)
     if current_time == sunset_time:
         # activates the board
-        board.digital[13].write(1)
+        board.digital[motor].write(1)
         sleep(4)
-        board.digital[13].write(0)
-        print("System activated at: ", dt.now())
+        board.digital[motor].write(0)
+        log_date = str(dt.now())
+        f = open("arduino_log.txt", "a")
+        f.write(f"System activated at: {log_date}")
+        f.close()
