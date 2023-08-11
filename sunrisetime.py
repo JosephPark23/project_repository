@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
 from datetime import datetime as dt
-from pyfirmata import Arduino, util
 from time import sleep
+from pyfirmata import util
 import pyfirmata as pyf
 
 # initialize board
@@ -15,9 +15,12 @@ motor = 13
 board.digital[motor].mode = pyf.OUTPUT
 
 # creates log
-f = open("arduino_log.txt", "x")
-f.write("ARDUINO LOG: ")
-f.close()
+try:
+    f = open("arduino_log.txt", "x")
+    f.write("ARDUINO LOG: ")
+    f.close()
+except FileExistsError:
+    print('file already exists')
 
 
 # scrape sunrise and sunset times
