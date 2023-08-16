@@ -44,7 +44,7 @@ def get_object():
     return sunrise_time_, sunset_time_
 
 
-def activate_arduino(motorPin, board):
+def activate_arduino(motor_pin, board):
     while True:
         try:
             # formats the returned times
@@ -60,9 +60,9 @@ def activate_arduino(motorPin, board):
             print(sunrise_time)
             if current_time == sunrise_time:
                 # activates the board
-                board.digital[motorPin].write(1)
+                board.digital[motor_pin].write(1)
                 sleep(10)
-                board.digital[motorPin].write(0)
+                board.digital[motor_pin].write(0)
                 log_date = str(dt.now())
                 print('ran at', log_date)
                 x = open("arduino_log.txt", "a")
