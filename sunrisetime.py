@@ -9,7 +9,8 @@ import pyfirmata as pyf
 # sets up board
 def main():
     # initialize board
-    board = pyf.Arduino('COM5')
+    port = input('enter port: ')
+    board = pyf.Arduino(port)
     it = pyf.util.Iterator(board)
     it.start()
 
