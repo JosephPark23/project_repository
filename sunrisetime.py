@@ -47,6 +47,7 @@ def get_object():
 
 def activate_arduino(motor_pin, board):
     while True:
+        
         try:
             # formats the returned times
             sunrise_time_str, sunset_time_str = get_object()
@@ -58,7 +59,6 @@ def activate_arduino(motor_pin, board):
             # checks if time matches sunset time
             now = dt.now()
             current_time = now.strftime("%H:%M")
-            print(sunrise_time)
             if current_time == sunrise_time:
                 # activates the board
                 board.digital[motor_pin].write(1)
@@ -69,6 +69,7 @@ def activate_arduino(motor_pin, board):
                 x = open("arduino_log.txt", "a")
                 x.write(f"System activated at: {log_date}")
                 x.close()
+                
         except KeyboardInterrupt:
             print('program stopped via manual override')
             quit()
