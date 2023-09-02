@@ -57,6 +57,10 @@ def format_entry(entry_text, title_text, dt_string):
     words = entry_text.split()
 
     # creates "margins" to make the text appear more organized
+    if len(words) <= 16:
+        entry_text = f"\n\n====[ {title_text} ]====\n\n{entry_text}\n\n{dt_string}\n\n{x}"
+        return entry_text
+    
     for word in words:
         if len(current_line) < 16:
             current_line.append(word)
@@ -67,7 +71,7 @@ def format_entry(entry_text, title_text, dt_string):
 
     # adds finishing touches and returns the formatted text
     return_text = '\n'.join(return_text)
-    entry_text = f"\n====[ {title_text} ]====\n\n{return_text}\n\n{dt_string}\n{x}"
+    entry_text = f"\n\n====[ {title_text} ]====\n\n{return_text}\n\n{dt_string}\n\n{x}"
     return entry_text
 
 
@@ -92,8 +96,8 @@ def access_post_():
         print("post not found")
         sleep(3)
         clear()
-        pass
-    index_two = blog_object[index_one:].find('#')
+        return
+    index_two = blog_object.find('###', index_one+6+len(title))
     print(f"post that you wanted is here:\n{blog_object[index_one:index_two]}")
     input("\n======================\npress enter to proceed\n======================\n")
     clear()
