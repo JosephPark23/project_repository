@@ -128,6 +128,7 @@ def format_email():
     return email
 
 
+# composes email
 def compose_email():
     subject = "Daily Briefing from jospar-bot"  # subject of email
     text = format_email()  # text of email
