@@ -122,13 +122,13 @@ def format_email():
             f"\nWeather: There will be {conditions}, {high} and {low}.\n"
             f"\nSports information: \n{table_data}\n"
             f"\nHave a great day!\n\n"
-            f"jospar-bot")
+            f"jospar-bot\n\n\n"
+            f"[Sent at {time}]")
     email = (f"{greeting}\n\n"
              f"{text}")
     return email
 
 
-# composes email
 def compose_email():
     subject = "Daily Briefing from jospar-bot"  # subject of email
     text = format_email()  # text of email
