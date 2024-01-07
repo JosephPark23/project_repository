@@ -1,4 +1,4 @@
-# Note: Do not use this program for commercial use, personal use only
+# note: this file is designed for a windows terminal and simple bash scripts can be written for thid
 # Imports necessary modules: bs4 and urllib for webscraping, os and time for cleaning up interface, string and colorama
 # and utilities for aesthetics
 # Run inside terminal
