@@ -132,9 +132,9 @@ def format_email():
 def compose_email():
     subject = "Daily Briefing from jospar-bot"  # subject of email
     text = format_email()  # text of email
-    recipient = "joseph0701p@gmail.com"  # recipient email
-    sender = "code_burner_01@outlook.com"  # sender email
-    app_password = "wgnwooooexufvgfi"  # one-time app password
+    recipient = "recipient_email@host.com"  # recipient email
+    sender = "your_email@host.com"  # sender email
+    app_password = "yourapppassword"  # one-time app password
     send_email(subject, text, recipient, sender, app_password)
 
 
