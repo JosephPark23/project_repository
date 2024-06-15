@@ -5,8 +5,8 @@ from email.mime.multipart import MIMEMultipart
 def send_message(subject, message, reciever_email):
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
-    sender_email = "joseph0701p@gmail.com"
-    password = "oompnxjzxjtysruy"
+    sender_email = "your_email"
+    password = "your_password"
     # Create a multipart message and set headers
     msg = MIMEMultipart()
     msg["From"] = sender_email
