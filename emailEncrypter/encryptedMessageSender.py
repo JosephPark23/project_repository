@@ -1,4 +1,4 @@
-from cryptography.fernet import Fernet # for obvious purposes
+from cryptography.fernet import Fernet
 import base64 # converting bytes and strings
 from os import system, name # clearing the terminal
 from extract_gmail_from_user import get_body
@@ -17,7 +17,6 @@ def clear():
 def retry(seconds):
     sleep(seconds)
     clear()
-
 
 # generates the key string and gives it to the user
 def generate_key_string():
@@ -125,7 +124,7 @@ def decrypt_email():
 # run the program
 def main():
     try:
-        choice = int(input("Welcome to the Secure Message Service. Would you like to"
+        choice = int(input("Would you like to"
           "\n(1) Send an encrypted message"
           "\n(2) Decrypt a message"
           "\nEnter your choice (1/2): "))
