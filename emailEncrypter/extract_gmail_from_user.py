@@ -14,34 +14,34 @@ def get_body(subject):
     imap_url = 'imap.gmail.com'
     mail = imaplib.IMAP4_SSL(imap_url)
 
-    # Login to the mailbox
+    # login to the inbox
     mail.login(user, password)
     mail.select('inbox')
 
-    # Search for emails with the specific subject
+    # search for email with the encryption ID
     search_criterion = f'(HEADER Subject "{subject}")'
     status, response = mail.search(None, search_criterion)
 
     if status != 'OK' or not response[0]:
         return f"No emails found with subject: {subject}"
 
-    # Get the latest email ID (assuming the search results are sorted by date)
-    latest_email_id = response[0].split()[-1]  # Get the latest email
+    # get the latest email ID (assuming the search results are sorted by date)
+    latest_email_id = response[0].split()[-1]  # get the latest email
 
-    # Fetch the email with the latest ID
+    # get the email with the latest ID
     status, msg_data = mail.fetch(latest_email_id, '(RFC822)')
 
     if status != 'OK':
         return "Failed to fetch the email."
 
-    # Parse the email content
+    # process the contents of the email
     raw_email = msg_data[0][1]
     msg = email.message_from_bytes(raw_email)
 
-    # Extract subject and body
+    # get subject/body
     from_email = msg['from']
 
-    # Process the email body
+    # process the body
     body = ""
     if msg.is_multipart():
         for part in msg.walk():
@@ -52,8 +52,8 @@ def get_body(subject):
     else:
         body = msg.get_payload(decode=True).decode()
 
-    # Logout from the mailbox
+    # logout
     mail.logout()
 
-    # Return the extracted body
+    # return the contents here:
     return body
