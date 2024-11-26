@@ -1,2 +1,4 @@
-a repositiory for some projects for me to get better insight into OOP development and explore various libraries
+a repository for the project's I've done
+
+update: I'm now moving different projects to separate repositories
 
