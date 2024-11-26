@@ -84,8 +84,7 @@ public class PasswordGame {
         System.out.print("\nOur report found that");
 
         if (nums && caps && lows && specs && baseline && notEasilyGuessedPassword) {
-            System.out.println(" you're not a moron! Your password fulfilled the requirements " +
-                    "and didn't suck!");
+            System.out.println("you have a great password!!");
 
         } else {
             System.out.println(":\n");
@@ -120,9 +119,9 @@ public class PasswordGame {
         double finalGrade = 100 * (grade / 120.0);
         if (finalGrade > 65) {
             System.out.println("\nJosephChecker's final score: " + Math.round(finalGrade) + "/100" +
-                    "\n\nMake sure to give us a five star rating on the app store or else... ");
+                    "\n\nStay safe!");
         } else {
-            System.out.println("\nyou FAILED you moron. No one should ever hire you as an IT guy. Final grade: -10000/100.");
+            System.out.println("\nBad password!");
         }
     }
 
