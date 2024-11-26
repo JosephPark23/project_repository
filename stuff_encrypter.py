@@ -1,5 +1,5 @@
-# saucy programming
-from cryptography.fernet import Fernet # because why not?
+# encrypt the contents of your files!
+from cryptography.fernet import Fernet
 import base64 # converting bytes and strings
 from os import system, name # clearing the terminal
 import time # error handling messages
