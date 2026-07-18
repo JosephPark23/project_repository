@@ -1,2 +1,1 @@
-a repository for the projects I've done
-
+I've done a lot of random projects :)
